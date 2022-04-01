@@ -5,7 +5,7 @@ import os, os.path
 from bungieapi import BungieApi
 from config import API_KEY, CLIENT_ID, CLIENT_SECRET
 
-LOGIN_URL = "https://www.bungie.net/en/OAuth/Authorize?client_id=39913&response_type=code&reauth=true"
+LOGIN_URL = "https://www.bungie.net/en/OAuth/Authorize?client_id=%s&response_type=code&reauth=true" % CLIENT_ID
 api = BungieApi(API_KEY, CLIENT_ID, CLIENT_SECRET)
 
 
