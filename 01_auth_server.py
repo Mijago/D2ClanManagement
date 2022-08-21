@@ -24,7 +24,7 @@ class ServerHandler(BaseHTTPRequestHandler):
 
         if "?code=" not in self.path:
             self._set_headers()
-            self.wfile.write(self._html("Could not read the auth code. <a href='%s'>Click here</a> to add a new account." % LOGIN_URL))
+            self.wfile.write(self._html(f"Could not read the auth code. <a href='{LOGIN_URL}'>Click here</a> to add a new account."))
             return
 
         code = self.path[self.path.index("?code=") + 6:]

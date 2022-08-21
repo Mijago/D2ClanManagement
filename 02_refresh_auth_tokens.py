@@ -16,7 +16,7 @@ for l in lst:
     if r is not None:
         lst[l] = r
     else:
-        print("COULD NOT UPDATE ID=%d" % l)
+        print(f"COULD NOT UPDATE ID={l}")
         print(l)
 
 with open("users.json", "w") as f:

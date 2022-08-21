@@ -31,7 +31,7 @@ for user in userList:
 
     clanInfo = api.findClanForMembership(membershipType, membershipId)
     if clanInfo["totalResults"] != 1:
-        print("ERROR WITH %d %d %s: No clans found. Ignoring" % (user, membershipType, membershipId))
+        print(f"ERROR WITH {user} {membershipType} {membershipId}: No clans found. Ignoring")
         continue
     clan = clanInfo["results"][0]
     l = api.editClanInfo(

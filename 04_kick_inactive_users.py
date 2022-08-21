@@ -19,7 +19,7 @@ for user in userList:
 
     clanInfo = api.findClanForMembership(membershipType, membershipId)
     if clanInfo["totalResults"] != 1:
-        print("ERROR WITH %d %d %s: No clans found. Ignoring" % (user, membershipType, membershipId))
+        print(f"ERROR WITH {user} {membershipType} {membershipId}: No clans found. Ignoring")
         continue
     clan = clanInfo["results"][0]
 
@@ -31,7 +31,7 @@ formatStr = "{:<9}\t{:<30}\t{:<20}\t{:<5}"
 for todo in todoGroups:
     groupId = todo[2]
     users = api.getGroupMembers(groupId)["results"]
-    print("Handling Clan:\t'%s'" % todo[3])
+    print(f"Handling Clan:\t'{todo[3]}'")
     print(formatStr.format("GroupId", "UserName", "Last Seen", "Gone Days"))
 
     now = datetime.now()
