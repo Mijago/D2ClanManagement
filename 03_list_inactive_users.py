@@ -36,6 +36,8 @@ for todo in todoGroups:
     users = sorted(users, key=lambda user: datetime.fromtimestamp(int(user["lastOnlineStatusChange"])))
 
     for user in users:
+        if user["memberType"] >= 3: # filter admins
+            continue
         dt = datetime.fromtimestamp(int(user["lastOnlineStatusChange"]))
         goneDays = (now - dt).days
         if goneDays > MAX_OFFLINE_DAYS:

@@ -1,3 +1,4 @@
+import json
 import time
 from typing import Dict
 import requests
@@ -104,3 +105,27 @@ class BungieApi:
                                 )
         return api_call.json()['Response']
         pass
+
+    def kickGroupMember(self, groupId, membershipType, membershipId, access_token=None):
+        assert (access_token is not None)
+        header = {
+            "X-API-Key": self.__HEADERS["X-API-Key"],
+            "Authorization": "Bearer " + access_token
+        }
+        api_call = requests.post(f'{API_ROOT_PATH}/GroupV2/{groupId}/Members/{membershipType}/{membershipId}/Kick/',
+                                 headers=header
+                                 )
+        return api_call.json()
+
+    def editClanInfo(self, groupId, access_token, data):
+        data = json.dumps(data)
+        assert (access_token is not None)
+        header = {
+            "X-API-Key": self.__HEADERS["X-API-Key"],
+            "Authorization": "Bearer " + access_token
+        }
+        api_call = requests.post(f'{API_ROOT_PATH}/GroupV2/{groupId}/Edit/',
+                                 headers=header,
+                                 data=data
+                                 )
+        return api_call.json()
